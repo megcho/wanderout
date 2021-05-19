@@ -3,17 +3,31 @@
 // Assign API URL to a constant
 const url = 'https://developer.nps.gov/api/v1/parks?&api_key=wSlcKl1LSOpHXf164FTShbQZC4cmu1VWTJiipnFk&limit=500'
 
+
+// Assign JSON to variable
+let parks
+
+fetch(url)  
+  .then(res => res.json())
+  .then(data => parks = data)
+  .then(() => console.log(parks))
+
+// Catch Block
+.catch(err => {  
+    console.error('Fetch Error', err)
+    })
+
 // Activities Dropdown
 const acsDrop = document.getElementById('activities-dropdown')
 acsDrop.length = 0
 
 const acsDropDefault = document.createElement('option')
 acsDropDefault.text = 'How do you wander?'
+acsDropDefault.disabled = true
 
 acsDrop.add(acsDropDefault)
 acsDrop.selectedIndex = 0
 
-// Fetch API and Render Activities
 fetch(url)  
   .then(res => res.json().then(parks => {  
     let option
@@ -26,11 +40,7 @@ fetch(url)
         }
     }    
   })
-)  
-// Catch Block
-.catch(err => {  
-    console.error('Fetch Error', err)
-    })
+) 
 
 
 // Click Event Listener and Activities Selected
