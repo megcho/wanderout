@@ -11,6 +11,7 @@ h1 {
 p {
     font-family: sans-serif;
     color: #62645C;
+    font-size: 15px;
 }
 
 #center {
@@ -18,4 +19,16 @@ p {
     width: 50%;
     padding: 10px;
     text-align: center;
+}
+
+img {
+    float: left;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+ul {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
 }

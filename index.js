@@ -21,13 +21,11 @@ fetch(url)
   .then(res => res.json().then(parks => {  
     let option
     for (let i = 0; i < parks.data.length; i++) {
-        for (let j = 0; j < parks.data.length; j++) {
             option = document.createElement('option')
-            option.text = parks.data[i].activities[j].name
-            option.value = parks.data[i].activities[j].name
+            option.text = parks.data[i].activities[0].name
+            option.value = parks.data[i].activities[0].name
             acsDrop.append(option)
-        }
-    }    
+    } 
   })
 ) 
 .catch(err => {  
@@ -57,7 +55,7 @@ fetch(url)
             const ul = document.createElement('ul')
             const img = document.createElement('img')
             const descrip = document.createElement('p')
-            img.src = parks.data[i].images.url
+            img.src = parks.data[i].images[0].url
             ul.innerText = parks.data[i].fullName
             descrip.innerText = parks.data[i].description
             parkDiv.append(ul, img, descrip)
