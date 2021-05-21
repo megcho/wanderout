@@ -59,6 +59,11 @@ const letsWander = wanderBtn.addEventListener('click', () => {
     renderParks(selectedState, selectedActivity)
 })
 
+// Reset Event Listener
+document.getElementById('reset').addEventListener('click', function() {
+    location.reload()
+  })
+
 // Render Parks Function
 const parkDiv = document.getElementById('park-results')
 
