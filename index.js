@@ -82,10 +82,13 @@ function renderParks(selectedState, selectedActivity) {
             const ul = document.createElement('ul')
             const img = document.createElement('img')
             const descrip = document.createElement('p')
+            const directions = document.createElement('a')
+            directions.innerText = 'Get Directions'
+            directions.href = filteredParks[i].directionsUrl
             img.src = filteredParks[i].images[0].url
             ul.innerText = filteredParks[i].fullName
             descrip.innerText = filteredParks[i].description
-            parkDiv.append(ul, img, descrip) 
+            parkDiv.append(img, ul, descrip, directions) 
         }  
   }
 
