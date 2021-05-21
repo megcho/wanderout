@@ -50,26 +50,39 @@ document.addEventListener('DOMContentLoaded', (e) => {
 const wanderBtn = document.getElementById('submit')
 
 const letsWander = wanderBtn.addEventListener('click', () => {
-    const selectedState = document.getElementById('states-dropdown')
-    const checkedActivity = document.querySelectorAll('#activities-dropdown :checked')
-    const selected = [...checkedActivity, selectedState].map(option => option.value)
-    console.log(selected)
-    renderParks()
+    const state = document.getElementById('states-dropdown')
+    const activity = document.querySelectorAll('#activities-dropdown :checked')
+    const selectedActivity = [...activity].map(option => option.value)
+    const selectedState = [state].map(option => option.value)
+    console.log(selectedState)
+    console.log(selectedActivity)
+    renderParks(selectedState, selectedActivity)
 })
 
 // Render Parks Function
 const parkDiv = document.getElementById('park-results')
 
+function renderParks(selectedState, selectedActivity) {
+    console.log(selectedState)
+    console.log(selectedActivity)
 
-function renderParks() {
-    for (let i = 0; i < parks.data.length; i++) {
+    let filteredParks = parks.data.filter(el => {
+            return el.states.includes(selectedState)
+                // && el.activities.name[0].includes("Guided Tours")
+            ;
+        }
+    )
+
+    console.log(filteredParks)
+
+    for (let i = 0; i < filteredParks.length; i++) {
             const ul = document.createElement('ul')
             const img = document.createElement('img')
             const descrip = document.createElement('p')
-            img.src = parks.data[i].images[0].url
-            ul.innerText = parks.data[i].fullName
-            descrip.innerText = parks.data[i].description
-            parkDiv.append(ul, img, descrip)
+            img.src = filteredParks[i].images[0].url
+            ul.innerText = filteredParks[i].fullName
+            descrip.innerText = filteredParks[i].description
+            parkDiv.append(ul, img, descrip) 
         }  
   }
 
