@@ -29,15 +29,14 @@ acsDropDefault.disabled = true
 
 acsDrop.add(acsDropDefault)
 acsDrop.selectedIndex = 0
+
 function renderActivities() {  
     let option
     for (let i = 0; i < parks.data.length; i++) {
-        for (let j = 0; j < parks.data.length; j++) {
             option = document.createElement('option')
-            option.text = parks.data[i].activities[j].name
-            option.value = parks.data[i].activities[j].name
-            acsDrop.add(option)
-        }
+            option.text = parks.data[i].activities[0].name
+            option.value = parks.data[i].activities[0].name
+            acsDrop.append(option)
     }    
   }
 
@@ -74,7 +73,6 @@ function renderParks(selectedState, selectedActivity) {
     let filteredParks = parks.data.filter(el => {
             return el.states.includes(selectedState)
                 // && el.activities.name[0].includes("Guided Tours")
-            ;
         }
     )
 
@@ -94,11 +92,3 @@ function renderParks(selectedState, selectedActivity) {
 
   
 
-
-
-
-
-// assign fetch data to a variable
-// use the variable in a function to populate dropdown
-// use the variable in a function to populate parks 
-// return the function to populate parks in the on click function
