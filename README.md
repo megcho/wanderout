@@ -7,6 +7,7 @@ Wanderout is a Single Page Application that allows wanderers to identify a state
 - Select a state from the dropdown menu
 - Get Directions to nearby national parks
 - Explore multiple states!
+- Heart your favorite destinations!
 
 ## Tech
 Wanderout uses a number of open source projects to work properly:

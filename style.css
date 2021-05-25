@@ -10,7 +10,8 @@ body {
 
 h1 {
     color: darkgreen;
-    font-size: 75px;
+    font-size: 85px;
+    font-family: 'DM Serif Display', serif;
 }
 
 p {
