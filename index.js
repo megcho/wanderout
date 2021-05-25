@@ -39,8 +39,12 @@ document.getElementById('reset').addEventListener('click', function() {
 
 // Render Parks Function
 const parkDiv = document.getElementById('park-results')
+const EMPTY_HEART = '♡'
+const FULL_HEART = '♥'
 
-function renderParks(selectedState, selectedActivity) {
+  
+
+function renderParks(selectedState) {
     console.log(selectedState)
     let filteredParks = parks.data.filter(el => {
             return el.states.includes(selectedState)
@@ -48,19 +52,34 @@ function renderParks(selectedState, selectedActivity) {
     )
     console.log(filteredParks)
 
+
     for (let i = 0; i < filteredParks.length; i++) {
             const ul = document.createElement('ul')
             const img = document.createElement('img')
             const descrip = document.createElement('p')
             const directions = document.createElement('a')
+            const liker = document.createElement('button')
+            liker.setAttribute("id", "liker-btn")
+            liker.textContent = EMPTY_HEART
             directions.innerText = 'Get Directions'
             directions.href = filteredParks[i].directionsUrl
             directions.target = '_blank'
             img.src = filteredParks[i].images[0].url
             ul.innerText = filteredParks[i].fullName
             descrip.innerText = filteredParks[i].description
-            parkDiv.append(img, ul, descrip, directions) 
-            
+            parkDiv.append(img, ul, descrip, directions, liker) 
         }  
+        const button = document.getElementById('liker-btn')
+        button.addEventListener('click', toggle)
+        
+        function toggle() {
+          const like = button.textContent
+          if(like===EMPTY_HEART) {
+            button.textContent = FULL_HEART
+          } else {
+            button.textContent = EMPTY_HEART
+          }
+        }
   }
+
 
