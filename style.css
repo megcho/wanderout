@@ -15,7 +15,7 @@ h1 {
 
 p {
     font-family: sans-serif;
-    color: #62645C;
+    color: hsl(75, 4%, 38%);
     font-size: 15px;
     overflow: hidden;
     padding: 10px;
@@ -29,8 +29,8 @@ p {
 }
 
 img {
-    width:  160px;
-    height: 220px;
+    width:  150px;
+    height: 150px;
     object-fit: cover;
     padding: 10px;
     float: left;   
