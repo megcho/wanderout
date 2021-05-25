@@ -1,5 +1,3 @@
-// API KEY: wSlcKl1LSOpHXf164FTShbQZC4cmu1VWTJiipnFk
-
 window.addEventListener('DOMContentLoaded', (e) => {
     console.log('DOM fully loaded and parsed')
 })
