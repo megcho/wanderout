@@ -42,7 +42,6 @@ const parkDiv = document.getElementById('park-results')
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
-  
 
 function renderParks(selectedState) {
     console.log(selectedState)
@@ -81,5 +80,3 @@ function renderParks(selectedState) {
           }
         }
   }
-
-
