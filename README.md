@@ -18,3 +18,8 @@ Wanderout uses a number of open source projects to work properly:
 - JSON
 - CSS
 
+## Credits
+- https://www.nps.gov/subjects/developer/api-documentation.htm
+
+## Github
+- https://github.com/megcho/wanderout
