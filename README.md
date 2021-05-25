@@ -1,4 +1,4 @@
-# ![Wanderout Logo](logo.png)
+# ![Wanderout Logo](wander.png)
 ## Discover the wanderer in you.
 
 Wanderout is a Single Page Application that allows wanderers to identify a state they'd like to explore and what National Parks are available to them, then how to get there. 
