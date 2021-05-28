@@ -1,47 +1,47 @@
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded and parsed')
+    getParks()
+    addEventListeners()
 })
 
-// Assign API URL to a constant
-const url = 'https://developer.nps.gov/api/v1/parks?api_key=wSlcKl1LSOpHXf164FTShbQZC4cmu1VWTJiipnFk&limit=500'
 
 // Fetch
 let parks
 
 function getParks() {
+  const url = 'https://developer.nps.gov/api/v1/parks?api_key=wSlcKl1LSOpHXf164FTShbQZC4cmu1VWTJiipnFk&limit=500'
 	fetch(url)
 		.then(res => {
-			return res.json() // Sends JSON response composed of the data
+			return res.json() 
 		})
 		.then(data => {
 			parks = data
 			console.log(parks)
 		})
 }
-getParks()
+
 
 // Event Listener for Submit and Selected State
-const wanderBtn = document.getElementById('submit')
+function addEventListeners() {
+  const wanderBtn = document.getElementById('submit')
 
-wanderBtn.addEventListener('click', () => {
-    const state = document.getElementById('states-dropdown')
-    const selectedState = [state].map(option => option.value)
-    console.log(selectedState)
-    renderParks(selectedState)
-})
-
-// Reset Event Listener
-document.getElementById('reset').addEventListener('click', () => {
-    location.reload()
+  wanderBtn.addEventListener('click', () => {
+      const state = document.getElementById('states-dropdown')
+      const selectedState = [state].map(option => option.value) // array with the state selected
+      console.log(selectedState)
+      renderParks(selectedState) 
   })
+}
+
 
 // Render Parks Function
-const parkDiv = document.getElementById('park-results')
-
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 function renderParks(selectedState) {
+  console.log("hello")
+    const parkDiv = document.getElementById('park-results')
+    parkDiv.innerHTML = ' '
     console.log(selectedState)
     let filteredParks = parks.data.filter(el => {
             return el.states.includes(selectedState)
@@ -63,13 +63,20 @@ function renderParks(selectedState) {
             ul.innerText = filteredParks[i].fullName
             descrip.innerText = filteredParks[i].description
             parkDiv.append(img, ul, descrip, directions, liker) 
-            liker.addEventListener('click', () => {
-              const like = liker.textContent
-              if(like===EMPTY_HEART) {
-                liker.textContent = FULL_HEART
-              } else {
-                liker.textContent = EMPTY_HEART
-              }
-            })
+            liker.addEventListener('click', likePark)
+            }
         }  
+  
+
+  const likePark = (e) => {
+    const liker = e.target
+    const like = liker.textContent
+    if(like===EMPTY_HEART) {
+      liker.textContent = FULL_HEART
+    } else {
+      liker.textContent = EMPTY_HEART
+    }
   }
+
+  // dont put things in global
+  
